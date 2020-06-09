@@ -17,9 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let homeViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        let navController = UINavigationController(rootViewController: homeViewController)
+        
+        navController.navigationBar.isTranslucent = false
+        navController.navigationBar.tintColor = .black
+        
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = HomeViewController()
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
         
     }

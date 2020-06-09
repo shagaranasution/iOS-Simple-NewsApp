@@ -15,10 +15,16 @@
 		FF6DCF53248D15A000F8C4B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6DCF51248D15A000F8C4B4 /* LaunchScreen.storyboard */; };
 		FFFB26BD248D2DB200038EA3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26BB248D2DB200038EA3 /* HomeViewController.swift */; };
 		FFFB26BE248D2DB200038EA3 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFB26BC248D2DB200038EA3 /* HomeViewController.xib */; };
-		FFFB26C1248D2EA500038EA3 /* ChildViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26BF248D2EA500038EA3 /* ChildViewController1.swift */; };
-		FFFB26C2248D2EA500038EA3 /* ChildViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFB26C0248D2EA500038EA3 /* ChildViewController1.xib */; };
-		FFFB26C5248D2F6A00038EA3 /* ChildViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26C3248D2F6A00038EA3 /* ChildViewController2.swift */; };
-		FFFB26C6248D2F6A00038EA3 /* ChildViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFB26C4248D2F6A00038EA3 /* ChildViewController2.xib */; };
+		FFFB26CD248DE79800038EA3 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26CB248DE79800038EA3 /* NewsListViewController.swift */; };
+		FFFB26CE248DE79800038EA3 /* NewsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFB26CC248DE79800038EA3 /* NewsListViewController.xib */; };
+		FFFB26D0248DE8C300038EA3 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26CF248DE8C300038EA3 /* NewsManager.swift */; };
+		FFFB26D2248DEAE600038EA3 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26D1248DEAE600038EA3 /* NewsData.swift */; };
+		FFFB26D5248DEF5E00038EA3 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26D3248DEF5E00038EA3 /* NewsCell.swift */; };
+		FFFB26D6248DEF5E00038EA3 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFB26D4248DEF5E00038EA3 /* NewsCell.xib */; };
+		FFFB26D9248DF32000038EA3 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26D7248DF32000038EA3 /* LoadingCell.swift */; };
+		FFFB26DA248DF32000038EA3 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFB26D8248DF32000038EA3 /* LoadingCell.xib */; };
+		FFFB26DD248E306100038EA3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26DB248E306100038EA3 /* DetailViewController.swift */; };
+		FFFB26DE248E306100038EA3 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFB26DC248E306100038EA3 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,10 +40,16 @@
 		FF6DCF54248D15A000F8C4B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFFB26BB248D2DB200038EA3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FFFB26BC248D2DB200038EA3 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		FFFB26BF248D2EA500038EA3 /* ChildViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController1.swift; sourceTree = "<group>"; };
-		FFFB26C0248D2EA500038EA3 /* ChildViewController1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChildViewController1.xib; sourceTree = "<group>"; };
-		FFFB26C3248D2F6A00038EA3 /* ChildViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewController2.swift; sourceTree = "<group>"; };
-		FFFB26C4248D2F6A00038EA3 /* ChildViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChildViewController2.xib; sourceTree = "<group>"; };
+		FFFB26CB248DE79800038EA3 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		FFFB26CC248DE79800038EA3 /* NewsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsListViewController.xib; sourceTree = "<group>"; };
+		FFFB26CF248DE8C300038EA3 /* NewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
+		FFFB26D1248DEAE600038EA3 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
+		FFFB26D3248DEF5E00038EA3 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		FFFB26D4248DEF5E00038EA3 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		FFFB26D7248DF32000038EA3 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		FFFB26D8248DF32000038EA3 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		FFFB26DB248E306100038EA3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		FFFB26DC248E306100038EA3 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,10 +120,10 @@
 				FF6DCF4A248D159F00F8C4B4 /* ViewController.swift */,
 				FFFB26BB248D2DB200038EA3 /* HomeViewController.swift */,
 				FFFB26BC248D2DB200038EA3 /* HomeViewController.xib */,
-				FFFB26BF248D2EA500038EA3 /* ChildViewController1.swift */,
-				FFFB26C0248D2EA500038EA3 /* ChildViewController1.xib */,
-				FFFB26C3248D2F6A00038EA3 /* ChildViewController2.swift */,
-				FFFB26C4248D2F6A00038EA3 /* ChildViewController2.xib */,
+				FFFB26CB248DE79800038EA3 /* NewsListViewController.swift */,
+				FFFB26CC248DE79800038EA3 /* NewsListViewController.xib */,
+				FFFB26DB248E306100038EA3 /* DetailViewController.swift */,
+				FFFB26DC248E306100038EA3 /* DetailViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -119,6 +131,10 @@
 		FF6DCF5C248D160000F8C4B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FFFB26D3248DEF5E00038EA3 /* NewsCell.swift */,
+				FFFB26D4248DEF5E00038EA3 /* NewsCell.xib */,
+				FFFB26D7248DF32000038EA3 /* LoadingCell.swift */,
+				FFFB26D8248DF32000038EA3 /* LoadingCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -126,6 +142,8 @@
 		FF6DCF5D248D160900F8C4B4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FFFB26CF248DE8C300038EA3 /* NewsManager.swift */,
+				FFFB26D1248DEAE600038EA3 /* NewsData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,9 +209,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF6DCF53248D15A000F8C4B4 /* LaunchScreen.storyboard in Resources */,
-				FFFB26C6248D2F6A00038EA3 /* ChildViewController2.xib in Resources */,
-				FFFB26C2248D2EA500038EA3 /* ChildViewController1.xib in Resources */,
+				FFFB26CE248DE79800038EA3 /* NewsListViewController.xib in Resources */,
+				FFFB26DE248E306100038EA3 /* DetailViewController.xib in Resources */,
+				FFFB26D6248DEF5E00038EA3 /* NewsCell.xib in Resources */,
 				FF6DCF50248D15A000F8C4B4 /* Assets.xcassets in Resources */,
+				FFFB26DA248DF32000038EA3 /* LoadingCell.xib in Resources */,
 				FFFB26BE248D2DB200038EA3 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,12 +267,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFFB26C5248D2F6A00038EA3 /* ChildViewController2.swift in Sources */,
 				FF6DCF4B248D159F00F8C4B4 /* ViewController.swift in Sources */,
 				FF6DCF47248D159F00F8C4B4 /* AppDelegate.swift in Sources */,
+				FFFB26D9248DF32000038EA3 /* LoadingCell.swift in Sources */,
+				FFFB26CD248DE79800038EA3 /* NewsListViewController.swift in Sources */,
+				FFFB26D5248DEF5E00038EA3 /* NewsCell.swift in Sources */,
+				FFFB26D0248DE8C300038EA3 /* NewsManager.swift in Sources */,
 				FF6DCF49248D159F00F8C4B4 /* SceneDelegate.swift in Sources */,
+				FFFB26DD248E306100038EA3 /* DetailViewController.swift in Sources */,
 				FFFB26BD248D2DB200038EA3 /* HomeViewController.swift in Sources */,
-				FFFB26C1248D2EA500038EA3 /* ChildViewController1.swift in Sources */,
+				FFFB26D2248DEAE600038EA3 /* NewsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

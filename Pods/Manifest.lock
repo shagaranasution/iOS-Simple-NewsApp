@@ -1,16 +1,22 @@
 PODS:
+  - SDWebImage (5.8.0):
+    - SDWebImage/Core (= 5.8.0)
+  - SDWebImage/Core (5.8.0)
   - XLPagerTabStrip (9.0.0)
 
 DEPENDENCIES:
+  - SDWebImage
   - XLPagerTabStrip (~> 9.0)
 
 SPEC REPOS:
   trunk:
+    - SDWebImage
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
+  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   XLPagerTabStrip: 61c57fd61f611ee5f01ff1495ad6fbee8bf496c5
 
-PODFILE CHECKSUM: c142bd0b9c9277cd17d4c5232adb1cf2d6889470
+PODFILE CHECKSUM: 5548149179c9d7184e0958f3384deda64f4f874e
 
 COCOAPODS: 1.9.1

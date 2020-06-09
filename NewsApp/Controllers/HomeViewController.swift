@@ -11,7 +11,13 @@ import XLPagerTabStrip
 
 class HomeViewController: ButtonBarPagerTabStripViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
+    
+    let newsList = NewsListViewController()
+    
+    var newsManager = NewsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +39,52 @@ class HomeViewController: ButtonBarPagerTabStripViewController {
             newCell?.label.textColor = self?.purpleInspireColor
         }
         
+        searchBar.delegate = self
+        
+        searchBar.placeholder = "Search news here.."
+        
+        self.navigationItem.title = "News"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super .viewDidDisappear(true)
+        
+        searchBar.resignFirstResponder()
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        let child_1 = ChildViewController1()
-        let child_2 = ChildViewController2()
+        let categoryAll = NewsListViewController()
+        categoryAll.category = nil
         
-        return [child_1, child_2]
+        let businessNews = NewsListViewController()
+        businessNews.category = "business"
+        
+        let technologyNews = NewsListViewController()
+        technologyNews.category = "technology"
+        
+        let entertainmentNews = NewsListViewController()
+        entertainmentNews.category = "entertainment"
+        
+        let healthNews = NewsListViewController()
+        healthNews.category = "health"
+        
+        return [categoryAll, businessNews, technologyNews, entertainmentNews, healthNews]
+
     }
     
+}
+
+//MARK: - Search Bar Delegate Methods
+
+extension HomeViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        let destinationVC = NewsListViewController(nibName: "NewsListViewController", bundle: nil)
+
+        self.navigationController?.pushViewController(destinationVC, animated: true)
+
+        destinationVC.comeByPressingSearchBarInHome = true
+    }
+
 }

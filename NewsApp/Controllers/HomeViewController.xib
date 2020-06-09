@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="buttonBarView" destination="ssZ-p3-AcL" id="Dd2-hz-72T"/>
                 <outlet property="containerView" destination="zhN-Eu-W1L" id="VZC-en-z3x"/>
+                <outlet property="searchBar" destination="uRl-5v-r1H" id="C25-cE-7qN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,8 +20,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="uRl-5v-r1H">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="um6-Pr-DMq"/>
+                    </constraints>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ssZ-p3-AcL" userLabel="Button Bar View" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                    <rect key="frame" x="0.0" y="44" width="414" height="64"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="64"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="gHQ-Xw-lDB"/>
@@ -33,18 +41,21 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhN-Eu-W1L" userLabel="Container View">
-                    <rect key="frame" x="0.0" y="108" width="414" height="788"/>
+                    <rect key="frame" x="0.0" y="152" width="414" height="744"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="ssZ-p3-AcL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="GsM-ht-oOp"/>
+                <constraint firstItem="uRl-5v-r1H" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="GAb-Go-GWa"/>
+                <constraint firstItem="uRl-5v-r1H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Giu-2L-ejY"/>
+                <constraint firstItem="ssZ-p3-AcL" firstAttribute="top" secondItem="uRl-5v-r1H" secondAttribute="bottom" id="GsM-ht-oOp"/>
                 <constraint firstItem="ssZ-p3-AcL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QaG-Nn-plw"/>
                 <constraint firstAttribute="bottom" secondItem="zhN-Eu-W1L" secondAttribute="bottom" id="Rap-ZV-1An"/>
+                <constraint firstItem="uRl-5v-r1H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XmN-rq-IBD"/>
                 <constraint firstItem="zhN-Eu-W1L" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="iv3-Wg-x64"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ssZ-p3-AcL" secondAttribute="trailing" id="mxY-Sm-2F8"/>
                 <constraint firstItem="zhN-Eu-W1L" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sYz-Yt-Owf"/>
-                <constraint firstItem="zhN-Eu-W1L" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="xiP-7N-wgj"/>
+                <constraint firstItem="zhN-Eu-W1L" firstAttribute="top" secondItem="ssZ-p3-AcL" secondAttribute="bottom" id="xiP-7N-wgj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="150.66964285714286"/>

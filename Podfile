@@ -5,6 +5,7 @@ target 'NewsApp' do
   use_frameworks!
 
   # Pods for NewsApp
+  pod 'SDWebImage'
   pod 'XLPagerTabStrip', '~> 9.0'
 
 end
