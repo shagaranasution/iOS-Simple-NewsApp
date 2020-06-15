@@ -33,7 +33,7 @@ class NewsListViewController: UIViewController {
         }
     }
     
-    var articles = [Article]()
+    var articles = [ArticleModel]()
     
     var newsManager = NewsManager()
     
@@ -94,17 +94,17 @@ extension NewsListViewController: UITableViewDataSource {
             
             if articles.count > 0 {
                 let article = articles[indexPath.row]
+                
                 tableView.isUserInteractionEnabled = true
                 tableView.separatorStyle = .singleLine
                 
                 cell.title?.text = article.title
                 cell.author?.text = article.author
-                cell.publishedDate?.text = article.publishedAt
+                cell.publishedDate?.text = article.publishedDateToDisplay
                 cell.rightImage.sd_setImage(with: URL(string: article.urlToImage ?? ""), placeholderImage: UIImage(systemName: "photo", withConfiguration: config))
                 cell.wrapperContent.isHidden = false
                 cell.emptyPlaceholder.isHidden = true
 
-                return cell
             } else {
                 tableView.isUserInteractionEnabled = false
                 tableView.separatorStyle = .none
@@ -113,16 +113,16 @@ extension NewsListViewController: UITableViewDataSource {
                 cell.emptyPlaceholder.isHidden = false
                 cell.emptyPlaceholder?.text = "No news to display."
                 
-                return cell
             }
             
-            
+            return cell
         } else {
-            tableView.separatorStyle = .none
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingIndicatorCell", for: indexPath) as! LoadingCell
             
             cell.loadingIndicator.startAnimating()
+            
+            tableView.separatorStyle = .none
             
             return cell
         }
@@ -139,7 +139,7 @@ extension NewsListViewController: UITableViewDataSource {
 
 extension NewsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destionationVC = DetailViewController(nibName: "DetailViewController", bundle: nil)
+        let destionationVC = DetailViewController()
         
         destionationVC.articleURL = articles[indexPath.row].url
         
@@ -158,14 +158,13 @@ extension NewsListViewController: UITableViewDelegate {
             if !isLoading && isPageDoesNotMeetMaxPage {
                 
                 isLoading = true
+                self.page += 1
                 
                 DispatchQueue.global().async {
                     
                     // Fake background loading task for 2 seconds
                     sleep(2)
                     
-                    // Download more data here
-                    self.page += 1
                     self.newsManager.fetchNews(q: nil, category: self.category, page: self.page)
                     
                 }
@@ -177,9 +176,9 @@ extension NewsListViewController: UITableViewDelegate {
 //MARK: - News Manager Delegate Methods
 
 extension NewsListViewController: NewsManagerDelegate {
-    func didUpdateNews(_ newsMager: NewsManager, newsData: NewsData) {
-        let totalArticle = newsData.totalResults
-        let articles = newsData.articles
+    func didUpdateNews(_ newsMager: NewsManager, news: NewsModel) {
+        let totalArticle = news.totalResult
+        let articles = news.formattedArticles
         
         self.totalArticle = totalArticle
         self.articles.append(contentsOf: articles)

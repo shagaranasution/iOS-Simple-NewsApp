@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Foundation
-
 struct NewsData: Decodable {
     let totalResults: Int
     let articles: [Article]

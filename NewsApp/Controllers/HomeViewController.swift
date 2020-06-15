@@ -15,10 +15,6 @@ class HomeViewController: ButtonBarPagerTabStripViewController {
     
     let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
     
-    let newsList = NewsListViewController()
-    
-    var newsManager = NewsManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,15 +43,15 @@ class HomeViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super .viewDidDisappear(true)
+        super.viewWillDisappear(true)
         
         searchBar.resignFirstResponder()
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        let categoryAll = NewsListViewController()
-        categoryAll.category = nil
+        let topNews = NewsListViewController()
+        topNews.category = nil
         
         let businessNews = NewsListViewController()
         businessNews.category = "business"
@@ -69,7 +65,7 @@ class HomeViewController: ButtonBarPagerTabStripViewController {
         let healthNews = NewsListViewController()
         healthNews.category = "health"
         
-        return [categoryAll, businessNews, technologyNews, entertainmentNews, healthNews]
+        return [topNews, businessNews, technologyNews, entertainmentNews, healthNews]
 
     }
     
@@ -80,7 +76,7 @@ class HomeViewController: ButtonBarPagerTabStripViewController {
 extension HomeViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let destinationVC = NewsListViewController(nibName: "NewsListViewController", bundle: nil)
+        let destinationVC = NewsListViewController()
 
         self.navigationController?.pushViewController(destinationVC, animated: true)
 

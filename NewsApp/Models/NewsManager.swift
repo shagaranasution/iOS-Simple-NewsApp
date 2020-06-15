@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NewsManagerDelegate {
-    func didUpdateNews(_ newsMager: NewsManager, newsData: NewsData)
+    func didUpdateNews(_ newsMager: NewsManager, news: NewsModel)
 }
 
 struct NewsManager {
@@ -38,9 +38,9 @@ struct NewsManager {
                 
                 if let safeData = data {
                     
-                    if let newsData = self.parseJSON(newsData: safeData) {
+                    if let news = self.parseJSON(newsData: safeData) {
                         
-                        self.delegate?.didUpdateNews(self, newsData: newsData)
+                        self.delegate?.didUpdateNews(self, news: news)
                         
                     }
                     
@@ -52,14 +52,21 @@ struct NewsManager {
         }
     }
     
-    func parseJSON(newsData: Data) -> NewsData? {
+    func parseJSON(newsData: Data) -> NewsModel? {
         
         let decoder = JSONDecoder()
         
         do {
             let news = try decoder.decode(NewsData.self, from: newsData)
             
-            return news
+
+            let totalResults = news.totalResults
+            let articles = news.articles
+             
+            let newsModel = NewsModel(totalResult: totalResults, articles: articles)
+
+            
+            return newsModel
         } catch {
             print("Fail when decoding data from JSON, \(error).")
             
