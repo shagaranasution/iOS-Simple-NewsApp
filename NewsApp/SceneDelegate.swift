@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let navigation = UINavigationController(rootViewController: homeView)
             navigation.navigationBar.isTranslucent = false
-            navigation.navigationBar.tintColor = .black
+            navigation.navigationBar.tintColor = .label
 
             window.rootViewController = navigation
 

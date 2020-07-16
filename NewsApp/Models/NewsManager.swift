@@ -17,8 +17,8 @@ struct NewsManager {
     
     var delegate: NewsManagerDelegate?
     
-    func fetchNews(q: String?, category: String?, page: Int) {
-        let urlString = "\(originURL)&q=\(q ?? "")&category=\(category ?? "")&page=\(page)"
+    func fetchNews(q: String?, category: NewsCategory, page: Int) {
+        let urlString = "\(originURL)&q=\(q ?? "")&category=\(category == .top ? "" : category.rawValue)&page=\(page)"
 
         performRequest(with: urlString)
     }

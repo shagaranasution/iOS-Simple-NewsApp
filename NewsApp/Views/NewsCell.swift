@@ -13,7 +13,7 @@ class NewsCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var author: UILabel!
     @IBOutlet weak var publishedDate: UILabel!
-    @IBOutlet weak var emptyPlaceholder: UILabel!
+    @IBOutlet weak var emptyText: UILabel!
     
     @IBOutlet weak var wrapperContent: UIStackView!
     @IBOutlet weak var rightImage: UIImageView!

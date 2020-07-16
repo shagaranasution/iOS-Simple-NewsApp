@@ -28,10 +28,10 @@
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ssZ-p3-AcL" userLabel="Button Bar View" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                    <rect key="frame" x="0.0" y="88" width="414" height="64"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="48"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="gHQ-Xw-lDB"/>
+                        <constraint firstAttribute="height" constant="48" id="gHQ-Xw-lDB"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OXS-ic-zK8">
                         <size key="itemSize" width="128" height="128"/>
@@ -41,7 +41,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhN-Eu-W1L" userLabel="Container View">
-                    <rect key="frame" x="0.0" y="152" width="414" height="744"/>
+                    <rect key="frame" x="0.0" y="136" width="414" height="760"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

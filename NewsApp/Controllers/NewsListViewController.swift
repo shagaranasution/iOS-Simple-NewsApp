@@ -19,7 +19,7 @@ class NewsListViewController: UIViewController {
     
     var comeByPressingSearchBarInHome = false
     
-    var category: String?
+    var category: NewsCategory = .top
     
     var page = 1
     
@@ -40,9 +40,9 @@ class NewsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "NewsCell", bundle: nil), forCellReuseIdentifier: "ReusableNewsCell")
+        tableView.register(UINib(nibName: K.NewsCell.nibName, bundle: nil), forCellReuseIdentifier: K.NewsCell.cellIdentifier)
         
-        tableView.register(UINib(nibName: "LoadingCell", bundle: nil), forCellReuseIdentifier: "LoadingIndicatorCell")
+        tableView.register(UINib(nibName: K.LoadingCell.nibName, bundle: nil), forCellReuseIdentifier: K.LoadingCell.cellIdentifier)
         
         tableView.dataSource = self
         
@@ -52,14 +52,14 @@ class NewsListViewController: UIViewController {
         
         searchBar.delegate = self
         
-        searchBar.placeholder = "Search news here.."
+        searchBar.placeholder = K.Placeholder.searchBar
         
         if !comeByPressingSearchBarInHome {
             searchBar.isHidden = true
             searchBar.heightAnchor.constraint(equalToConstant: 0).isActive = true
             newsManager.fetchNews(q: nil, category: category, page: page)
         } else {
-            self.navigationItem.title = "Search"
+            self.navigationItem.title = K.Navigation.titleSearch
             self.searchBar.becomeFirstResponder()
         }
         
@@ -87,9 +87,8 @@ extension NewsListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableNewsCell", for: indexPath) as! NewsCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.NewsCell.cellIdentifier, for: indexPath) as! NewsCell
             let config = UIImage.SymbolConfiguration(pointSize: 25, weight: .light, scale: .large)
             
             if articles.count > 0 {
@@ -101,24 +100,24 @@ extension NewsListViewController: UITableViewDataSource {
                 cell.title?.text = article.title
                 cell.author?.text = article.author
                 cell.publishedDate?.text = article.publishedDateToDisplay
-                cell.rightImage.sd_setImage(with: URL(string: article.urlToImage ?? ""), placeholderImage: UIImage(systemName: "photo", withConfiguration: config))
+                cell.rightImage.sd_setImage(with: URL(string: article.urlToImage ?? ""), placeholderImage: UIImage(systemName: K.imagePhotoName, withConfiguration: config))
                 cell.wrapperContent.isHidden = false
-                cell.emptyPlaceholder.isHidden = true
+                cell.emptyText.isHidden = true
 
             } else {
                 tableView.isUserInteractionEnabled = false
                 tableView.separatorStyle = .none
               
                 cell.wrapperContent.isHidden = true
-                cell.emptyPlaceholder.isHidden = false
-                cell.emptyPlaceholder?.text = "No news to display."
+                cell.emptyText.isHidden = false
+                cell.emptyText?.text = K.Placeholder.emptyCell
                 
             }
             
             return cell
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LoadingIndicatorCell", for: indexPath) as! LoadingCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: K.LoadingCell.cellIdentifier, for: indexPath) as! LoadingCell
             
             cell.loadingIndicator.startAnimating()
             
@@ -197,7 +196,7 @@ extension NewsListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         articles = []
         
-        newsManager.fetchNews(q: searchBar.text, category: nil, page: 1)
+        newsManager.fetchNews(q: searchBar.text, category: .top, page: 1)
         
         DispatchQueue.main.async {
             searchBar.resignFirstResponder()
@@ -228,7 +227,7 @@ extension NewsListViewController: UISearchBarDelegate {
 
 extension NewsListViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let title = category != nil ? category!.capitalized : "Top News"
+        let title = category != .top ? category.rawValue.capitalized : K.NewsCategories.topName
         return IndicatorInfo(title: title)
     }
 }
