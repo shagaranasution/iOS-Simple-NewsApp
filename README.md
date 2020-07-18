@@ -10,6 +10,10 @@ NewsApp is a simple iOS app to read articles from various webs of Indonesia news
 * [XLPagerTabStrip](https://github.com/xmartlabs/XLPagerTabStrip)
 * [SDWebImage](https://github.com/SDWebImage/SDWebImage)
 
+# Requirements
+* iOS 13.0+
+* Xcode 11.0+
+
 # Try Yourself
 * Clone repository
 * Build and run
