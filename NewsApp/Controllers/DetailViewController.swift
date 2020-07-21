@@ -13,7 +13,7 @@ class DetailViewController: UIViewController, WKNavigationDelegate {
     
     var articleURL: String?
     
-    var webView: WKWebView!
+    private var webView: WKWebView!
 
     override func loadView() {
         

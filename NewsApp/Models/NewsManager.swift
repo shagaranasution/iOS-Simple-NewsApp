@@ -8,14 +8,14 @@
 
 import Foundation
 
-protocol NewsManagerDelegate {
+protocol NewsManagerDelegate: class {
     func didUpdateNews(_ newsMager: NewsManager, news: NewsModel)
 }
 
 struct NewsManager {
-    let originURL = "https://newsapi.org/v2/top-headlines?country=id&apiKey=84af8b3c37c044ca8f0ce4e70f632d2a"
+    private let originURL = "https://newsapi.org/v2/top-headlines?country=id&apiKey=84af8b3c37c044ca8f0ce4e70f632d2a"
     
-    var delegate: NewsManagerDelegate?
+    weak var delegate: NewsManagerDelegate?
     
     func fetchNews(q: String?, category: NewsCategory, page: Int) {
         let urlString = "\(originURL)&q=\(q ?? "")&category=\(category == .top ? "" : category.rawValue)&page=\(page)"
@@ -23,7 +23,7 @@ struct NewsManager {
         performRequest(with: urlString)
     }
     
-    func performRequest(with urlString: String) {
+    private func performRequest(with urlString: String) {
         
         if let url = URL(string: urlString) {
             
@@ -52,7 +52,7 @@ struct NewsManager {
         }
     }
     
-    func parseJSON(newsData: Data) -> NewsModel? {
+    private func parseJSON(newsData: Data) -> NewsModel? {
         
         let decoder = JSONDecoder()
         

@@ -32,25 +32,25 @@ class HomeViewController: ButtonBarPagerTabStripViewController {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let topNews = NewsListViewController()
-        topNews.category = .top
+        topNews.newsQueryParam.setCategory(to: .top)
         
         let businessNews = NewsListViewController()
-        businessNews.category = .business
+        businessNews.newsQueryParam.setCategory(to: .business)
         
         let technologyNews = NewsListViewController()
-        technologyNews.category = .technology
+        technologyNews.newsQueryParam.setCategory(to: .technology)
         
         let entertainmentNews = NewsListViewController()
-        entertainmentNews.category = .entertainment
+        entertainmentNews.newsQueryParam.setCategory(to: .entertainment)
         
         let healthNews = NewsListViewController()
-        healthNews.category = .health
+        healthNews.newsQueryParam.setCategory(to: .health)
         
         return [topNews, businessNews, technologyNews, entertainmentNews, healthNews]
 
     }
     
-    func configureButtonBar() {
+    private func configureButtonBar() {
         settings.style.buttonBarBackgroundColor = .clear
         settings.style.buttonBarItemBackgroundColor = .clear
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 16)
@@ -68,7 +68,7 @@ class HomeViewController: ButtonBarPagerTabStripViewController {
         }
     }
     
-    func configureView() {
+    private func configureView() {
         self.navigationItem.title = K.Navigation.titleNews
         searchBar.placeholder = K.Placeholder.searchBar
     }

@@ -19,23 +19,21 @@ class NewsListViewController: UIViewController {
     
     var comeByPressingSearchBarInHome = false
     
-    var category: NewsCategory = .top
+    var newsQueryParam = NewsQueryParam()
     
-    var page = 1
+    private(set) var isPageDoesNotMeetMaxPage = false
     
-    var isPageDoesNotMeetMaxPage = false
-    
-    var totalArticle: Int? {
+    private var totalArticle: Int? {
         didSet {
             let maxPage = Int(ceil(Double(totalArticle!) / 20.0))
 
-            isPageDoesNotMeetMaxPage = page < maxPage ? true : false
+            isPageDoesNotMeetMaxPage = newsQueryParam.page < maxPage ? true : false
         }
     }
     
-    var articles = [ArticleModel]()
+    private(set) var articles = [ArticleModel]()
     
-    var newsManager = NewsManager()
+    private(set) var newsManager = NewsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +55,7 @@ class NewsListViewController: UIViewController {
         if !comeByPressingSearchBarInHome {
             searchBar.isHidden = true
             searchBar.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            newsManager.fetchNews(q: nil, category: category, page: page)
+            newsManager.fetchNews(q: nil, category: newsQueryParam.category, page: newsQueryParam.page)
         } else {
             self.navigationItem.title = K.Navigation.titleSearch
             self.searchBar.becomeFirstResponder()
@@ -65,111 +63,6 @@ class NewsListViewController: UIViewController {
         
     }
     
-}
-
-//MARK: - Table View Data Source Methods
-
-extension NewsListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if section == 0 {
-            if articles.count > 0 {
-                return articles.count
-            } else {
-                return 1
-            }
-        } else if section == 1 && isPageDoesNotMeetMaxPage {
-            return 1
-        } else {
-            return 0
-        }
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: K.NewsCell.cellIdentifier, for: indexPath) as! NewsCell
-            let config = UIImage.SymbolConfiguration(pointSize: 25, weight: .light, scale: .large)
-            
-            if articles.count > 0 {
-                let article = articles[indexPath.row]
-                
-                tableView.isUserInteractionEnabled = true
-                tableView.separatorStyle = .singleLine
-                
-                cell.title?.text = article.title
-                cell.author?.text = article.author
-                cell.publishedDate?.text = article.publishedDateToDisplay
-                cell.rightImage.sd_setImage(with: URL(string: article.urlToImage ?? ""), placeholderImage: UIImage(systemName: K.imagePhotoName, withConfiguration: config))
-                cell.wrapperContent.isHidden = false
-                cell.emptyText.isHidden = true
-
-            } else {
-                tableView.isUserInteractionEnabled = false
-                tableView.separatorStyle = .none
-              
-                cell.wrapperContent.isHidden = true
-                cell.emptyText.isHidden = false
-                cell.emptyText?.text = K.Placeholder.emptyCell
-                
-            }
-            
-            return cell
-        } else {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: K.LoadingCell.cellIdentifier, for: indexPath) as! LoadingCell
-            
-            cell.loadingIndicator.startAnimating()
-            
-            tableView.separatorStyle = .none
-            
-            return cell
-        }
-        
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
-}
-
-//MARK: - Table View Delegate Methods
-
-extension NewsListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destionationVC = DetailViewController()
-        
-        destionationVC.articleURL = articles[indexPath.row].url
-        
-        self.navigationController?.pushViewController(destionationVC, animated: true)
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let height = scrollView.frame.size.height
-        let contentYoffset = scrollView.contentOffset.y
-        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-        
-        
-        if (distanceFromBottom < height) && !isLoading {
-            if !isLoading && isPageDoesNotMeetMaxPage {
-                
-                isLoading = true
-                self.page += 1
-                
-                DispatchQueue.global().async {
-                    
-                    // Fake background loading task for 2 seconds
-                    sleep(2)
-                    
-                    self.newsManager.fetchNews(q: nil, category: self.category, page: self.page)
-                    
-                }
-            }
-        }
-    }
 }
 
 //MARK: - News Manager Delegate Methods
@@ -227,7 +120,7 @@ extension NewsListViewController: UISearchBarDelegate {
 
 extension NewsListViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        let title = category != .top ? category.rawValue.capitalized : K.NewsCategories.topName
+        let title = newsQueryParam.category != .top ? newsQueryParam.category.rawValue.capitalized : K.NewsCategories.topName
         return IndicatorInfo(title: title)
     }
 }

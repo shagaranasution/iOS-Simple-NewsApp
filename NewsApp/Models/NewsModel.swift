@@ -45,3 +45,16 @@ struct ArticleModel {
         return nil
     }
 }
+
+struct NewsQueryParam {
+    private(set) var page: Int = 1
+    private(set) var category: NewsCategory = .top
+    
+    mutating func updatePage(byAdding number: Int) {
+        self.page += number
+    }
+    
+    mutating func setCategory(to newsCategory: NewsCategory) {
+        self.category = newsCategory
+    }
+}

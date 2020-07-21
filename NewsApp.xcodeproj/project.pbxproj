@@ -14,6 +14,7 @@
 		FF6DCF49248D159F00F8C4B4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6DCF48248D159F00F8C4B4 /* SceneDelegate.swift */; };
 		FF6DCF50248D15A000F8C4B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF6DCF4F248D15A000F8C4B4 /* Assets.xcassets */; };
 		FF6DCF53248D15A000F8C4B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF6DCF51248D15A000F8C4B4 /* LaunchScreen.storyboard */; };
+		FF8C5BD024C5AFE100883B63 /* NewsListViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF8C5BCF24C5AFE100883B63 /* NewsListViewController+UITableView.swift */; };
 		FFE3B05A249783B000BDF6CF /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE3B059249783B000BDF6CF /* NewsModel.swift */; };
 		FFFB26BD248D2DB200038EA3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFFB26BB248D2DB200038EA3 /* HomeViewController.swift */; };
 		FFFB26BE248D2DB200038EA3 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFFB26BC248D2DB200038EA3 /* HomeViewController.xib */; };
@@ -40,6 +41,7 @@
 		FF6DCF4F248D15A000F8C4B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF6DCF52248D15A000F8C4B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF6DCF54248D15A000F8C4B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF8C5BCF24C5AFE100883B63 /* NewsListViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsListViewController+UITableView.swift"; sourceTree = "<group>"; };
 		FFE3B059249783B000BDF6CF /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		FFFB26BB248D2DB200038EA3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FFFB26BC248D2DB200038EA3 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				FFFB26BB248D2DB200038EA3 /* HomeViewController.swift */,
 				FFFB26BC248D2DB200038EA3 /* HomeViewController.xib */,
 				FFFB26CB248DE79800038EA3 /* NewsListViewController.swift */,
+				FF8C5BCF24C5AFE100883B63 /* NewsListViewController+UITableView.swift */,
 				FFFB26CC248DE79800038EA3 /* NewsListViewController.xib */,
 				FFFB26DB248E306100038EA3 /* DetailViewController.swift */,
 			);
@@ -271,6 +274,7 @@
 			files = (
 				FF6DCF47248D159F00F8C4B4 /* AppDelegate.swift in Sources */,
 				FFFB26D9248DF32000038EA3 /* LoadingCell.swift in Sources */,
+				FF8C5BD024C5AFE100883B63 /* NewsListViewController+UITableView.swift in Sources */,
 				FFFB26CD248DE79800038EA3 /* NewsListViewController.swift in Sources */,
 				FFFB26D5248DEF5E00038EA3 /* NewsCell.swift in Sources */,
 				FFE3B05A249783B000BDF6CF /* NewsModel.swift in Sources */,
