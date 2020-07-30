@@ -11,15 +11,17 @@ import XLPagerTabStrip
 
 class HomeViewController: ButtonBarPagerTabStripViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+        }
+    }
     
     override func viewDidLoad() {
         configureButtonBar()
         
         super.viewDidLoad()
-        
-        searchBar.delegate = self
-        
+    
         configureView()
     }
     

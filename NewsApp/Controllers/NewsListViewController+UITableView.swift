@@ -14,11 +14,7 @@ extension NewsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if section == 0 {
-            if articles.count > 0 {
-                return articles.count
-            } else {
-                return 1
-            }
+            return articles.count
         } else if section == 1 && isPageDoesNotMeetMaxPage {
             return 1
         } else {
@@ -32,28 +28,18 @@ extension NewsListViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: K.NewsCell.cellIdentifier, for: indexPath) as! NewsCell
             let config = UIImage.SymbolConfiguration(pointSize: 25, weight: .light, scale: .large)
             
-            if articles.count > 0 {
-                let article = articles[indexPath.row]
-                
-                tableView.isUserInteractionEnabled = true
-                tableView.separatorStyle = .singleLine
-                
-                cell.title?.text = article.title
-                cell.author?.text = article.author
-                cell.publishedDate?.text = article.publishedDateToDisplay
-                cell.rightImage.sd_setImage(with: URL(string: article.urlToImage ?? ""), placeholderImage: UIImage(systemName: K.imagePhotoName, withConfiguration: config))
-                cell.wrapperContent.isHidden = false
-                cell.emptyText.isHidden = true
-
-            } else {
-                tableView.isUserInteractionEnabled = false
-                tableView.separatorStyle = .none
-              
-                cell.wrapperContent.isHidden = true
-                cell.emptyText.isHidden = false
-                cell.emptyText?.text = K.Placeholder.emptyCell
-                
-            }
+            
+            let article = articles[indexPath.row]
+            
+            tableView.isUserInteractionEnabled = true
+            tableView.separatorStyle = .singleLine
+            
+            cell.title?.text = article.title
+            cell.author?.text = article.author
+            cell.publishedDate?.text = article.publishedDateToDisplay
+            cell.rightImage.sd_setImage(with: URL(string: article.urlToImage ?? ""), placeholderImage: UIImage(systemName: K.imagePhotoName, withConfiguration: config))
+            cell.wrapperContent.isHidden = false
+            cell.emptyText.isHidden = true
             
             return cell
         } else {

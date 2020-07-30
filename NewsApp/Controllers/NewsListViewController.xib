@@ -9,7 +9,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsListViewController" customModule="NewsApp" customModuleProvider="target">
             <connections>
+                <outlet property="emptyNewsLabel" destination="Eqd-T4-A4g" id="tbS-iS-plc"/>
                 <outlet property="searchBar" destination="Ack-5K-7Hb" id="fPB-Ld-E9Z"/>
+                <outlet property="spinner" destination="cBE-1w-JvO" id="TSt-by-2b8"/>
                 <outlet property="tableView" destination="Jw5-ay-igb" id="Ttl-eC-zCR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -28,6 +30,16 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cBE-1w-JvO">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                    <color key="color" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No news to display." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqd-T4-A4g" userLabel="Label Empty News">
+                    <rect key="frame" x="123.5" y="436" width="167.5" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -36,8 +48,12 @@
                 <constraint firstItem="Jw5-ay-igb" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="JIB-CI-saD"/>
                 <constraint firstItem="Ack-5K-7Hb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Vb3-yD-PzX"/>
                 <constraint firstAttribute="bottom" secondItem="Jw5-ay-igb" secondAttribute="bottom" id="cF4-gG-jxz"/>
+                <constraint firstItem="Eqd-T4-A4g" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dbY-j8-UCC"/>
                 <constraint firstItem="Ack-5K-7Hb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="gwV-eF-rpK"/>
+                <constraint firstItem="cBE-1w-JvO" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iKE-9g-20w"/>
+                <constraint firstItem="Eqd-T4-A4g" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="krg-fE-DhU"/>
                 <constraint firstItem="Jw5-ay-igb" firstAttribute="top" secondItem="Ack-5K-7Hb" secondAttribute="bottom" id="n8a-uP-0aC"/>
+                <constraint firstItem="cBE-1w-JvO" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="x3I-g9-8Sa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="131.91964285714286"/>

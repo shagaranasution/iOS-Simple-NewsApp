@@ -12,8 +12,27 @@ import SDWebImage
 
 class NewsListViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.separatorStyle = .none
+            
+            tableView.register(UINib(nibName: K.NewsCell.nibName, bundle: nil), forCellReuseIdentifier: K.NewsCell.cellIdentifier)
+            
+            tableView.register(UINib(nibName: K.LoadingCell.nibName, bundle: nil), forCellReuseIdentifier: K.LoadingCell.cellIdentifier)
+        }
+    }
+    
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+            searchBar.placeholder = K.Placeholder.searchBar
+        }
+    }
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var emptyNewsLabel: UILabel!
     
     var isLoading = false
     
@@ -31,36 +50,42 @@ class NewsListViewController: UIViewController {
         }
     }
     
-    private(set) var articles = [ArticleModel]()
+    private(set) var articles = [ArticleModel]() {
+        didSet {
+            if self.articles.isEmpty {
+                DispatchQueue.main.async {
+                    self.emptyNewsLabel?.isHidden = false
+                    self.tableView?.separatorStyle = .none
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.emptyNewsLabel?.isHidden = true
+                    self.tableView?.separatorStyle = .singleLine
+                }
+            }
+        }
+    }
     
     private(set) var newsManager = NewsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: K.NewsCell.nibName, bundle: nil), forCellReuseIdentifier: K.NewsCell.cellIdentifier)
-        
-        tableView.register(UINib(nibName: K.LoadingCell.nibName, bundle: nil), forCellReuseIdentifier: K.LoadingCell.cellIdentifier)
-        
-        tableView.dataSource = self
-        
-        tableView.delegate = self
-        
         newsManager.delegate = self
-        
-        searchBar.delegate = self
-        
-        searchBar.placeholder = K.Placeholder.searchBar
         
         if !comeByPressingSearchBarInHome {
             searchBar.isHidden = true
             searchBar.heightAnchor.constraint(equalToConstant: 0).isActive = true
             newsManager.fetchNews(q: nil, category: newsQueryParam.category, page: newsQueryParam.page)
+
+            DispatchQueue.main.async {
+                self.spinner.startAnimating()
+                self.emptyNewsLabel.isHidden = true
+            }
         } else {
             self.navigationItem.title = K.Navigation.titleSearch
             self.searchBar.becomeFirstResponder()
         }
-        
     }
     
 }
@@ -76,6 +101,7 @@ extension NewsListViewController: NewsManagerDelegate {
         self.articles.append(contentsOf: articles)
         
         DispatchQueue.main.async {
+            self.spinner.stopAnimating()
             self.tableView.reloadData()
             self.isLoading = false
         }
@@ -92,6 +118,8 @@ extension NewsListViewController: UISearchBarDelegate {
         newsManager.fetchNews(q: searchBar.text, category: .top, page: 1)
         
         DispatchQueue.main.async {
+            self.emptyNewsLabel.isHidden = true
+            self.spinner.startAnimating()
             searchBar.resignFirstResponder()
         }
         
